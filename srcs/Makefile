@@ -12,7 +12,7 @@ NAME		= tester.out
 
 CC			= gcc
 
-CFLAGS		= -I ${INCLUDES} -D PRINT="ft_printf"
+CFLAGS		= -I ${INCLUDES} -D PRINT="ft_printf" -D REAL_F=0
 
 RM			= rm -f
 
