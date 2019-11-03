@@ -24,11 +24,14 @@ do
 	else
 		echo -n "Test $i :"
 	fi
+	echo "----------Test $i ----------" >> diff.txt
+	echo -n "String : " >> diff.txt
 	if diff ft.txt printf.txt >> diff.txt ; then
  		echo -ne "\033[0;32m[OK]\033[0m" && echo "No Diff" >> diff.txt
 	else
  		 echo -ne "\033[0;31m[KO]\033[0m"
 	fi
+	echo -n "Return : " >> diff.txt
 	if diff ft_r.txt printf_r.txt >> diff.txt ; then
  		echo -ne "\033[0;32m [OK]	\033[0m" && echo "No Diff" >> diff.txt
 	else
@@ -41,5 +44,5 @@ do
 	let "i += 1"
 done
 echo
-rm includes/* *.txt printf.out &> /dev/null
+rm includes/* printf.txt printf_r.txt ft_r.txt ft.txt printf.out &> /dev/null
 make -C srcs/ fclean > /dev/null 2> results/compilerror.txt
