@@ -3,10 +3,10 @@
 #include <fcntl.h>
 #include "ft_printf.h"
 
-#define APRINT(x, a, ...) PRINT(x, a, __VA_ARGS__) && PRINT("  --- Test : %s... / * = %d", ft_substr(x, 0, 11), a, __VA_ARGS__)
-#define BPRINT(x, ...) PRINT(x, __VA_ARGS__) && PRINT("  --- Test : %s...", ft_substr(x, 0, 11))
-#define CPRINT(x, a, b, ...) PRINT(x, a, b, __VA_ARGS__) && PRINT("  --- Test : %s... / *1 = %d / *2 = %d", ft_substr(x, 0, 11), a, b, __VA_ARGS__) 
-#define DPRINT(x) PRINT(x) && PRINT("  --- Test : simple input")
+#define APRINT(x, a, ...) PRINT(x, a, __VA_ARGS__) ; PRINT("  --- Test : \"%s...\" / * = %d", ft_substr(x, 0, 11), a)
+#define BPRINT(x, ...) PRINT(x, __VA_ARGS__) ; PRINT("  --- Test : \"%s...\"", ft_substr(x, 0, 11))
+#define CPRINT(x, a, b, ...) PRINT(x, a, b, __VA_ARGS__) ; PRINT("  --- Test : \"%s...\" / *1 = %d / *2 = %d", ft_substr(x, 0, 11), a, b) 
+#define DPRINT(x) PRINT(x) ; PRINT("  --- Test : simple input : \"%s\"", x)
 
 int main()
 {
@@ -28,6 +28,7 @@ int main()
 	int		ret[1000];
 	int		count = -1;
 	int		fd;
+	int		nb_of_tests = 350;
 
 	ret[++count] = DPRINT("Simple input test"); //T1
 	PRINT("\n");
@@ -179,16 +180,31 @@ int main()
 		}
 		a++;
 	}
+	ret[++count] = BPRINT("%p, %x, %p, %x, %p, %x", 209590960, 209590960, 207038912, 207038912, 1, 1); //T2
+	PRINT("\n");
+	a = 8;
+	while (a < 12)
+	{
+		ret[++count] = APRINT("%*p, %*x, %*p, %*x, %*p, %*x", a, 209590960, a, 209590960, a, 207038912, a, 207038912, a, 1, a, 1); //T2
+		PRINT("\n");
+		ret[++count] = APRINT("%-*p, %-*x, %-*p, %-*x, %-*p, %-*x", a, 209590960, a, 209590960, a, 207038912, a, 207038912, a, 1, a, 1); //T2
+		PRINT("\n");
+//		ret[++count] = APRINT("%0*p, %0*x, %0*p, %0*x, %0*p, %0*x", a, 209590960, a, 209590960, a, 207038912, a, 207038912, a, 1, a, 1); //T2
+//		PRINT("\n");
+		a++;
+	}
 	ret[++count] = DPRINT("%%, \t, \\, \", \', +");
 	PRINT("\n");
 	// ret[++count] = CPRINT("%5i, %5d, %5d, %5d, %5d, %5d", i, j, k, l, m, c);
 	// // PRINT("\n");
 	// ret[++count] = CPRINT("%*.i, %.**d, %88.*d, %*.*d, %.*8d, %.8*d", a, i, a, a, j, a, k, a, l, a, m, a, c);
 	// // PRINT("\n");
-	// ret[++count] = CPRINT("%-00000-----*i, %-.0*d, %---.--*d, %-----.*d, %0000000000.000*d, %...00*d", a, i, a, j, a, k, a, l, a, m, a, c);
-	// // PRINT("\n");
-	// ret[++count] = CPRINT("%.-.-.-.-*i, %---0.*d, %0-0-0-0-0.*d, %-0-0-0-0-.*d, %....*d, %.*.d", a, i, a, j, a, k, a, l, a, m, a, c);
-	// // PRINT("\n");
+	ret[++count] = APRINT("%-00000-----*i, %---0.*d, %0-0-0-0-0.*d, %-0-0-0-0-.*d, %-----.*d", a, i, a, i, a, i, a, i, a, i);
+	PRINT("\n");
+	ret[++count] = APRINT("%-00000-----*i, %---0.*d, %0-0-0-0-0.*d, %-0-0-0-0-.*d, %-----.*d", a, j, a, j, a, j, a, j, a, j);
+	PRINT("\n");
+	ret[++count] = APRINT("%-00000-----*i, %---0.*d, %0-0-0-0-0.*d, %-0-0-0-0-.*d, %-----.*d", a, l, a, l, a, l, a, l, a, l);
+	PRINT("\n");
 	// ret[++count] = CPRINT("%599i, %599d, %599d, %599d, %599d, %599s, %599c, %599d", i, j, k, l, m, n, c, c);
 	// PRINT("\n");
 	ret[++count] = DPRINT("");
@@ -201,7 +217,7 @@ int main()
 			PRINT("TESTER Error\n\n");
 			return (0);
 		}
-		while (++count < 500)
+		while (++count < nb_of_tests)
 		{
 			ft_putnbr_fd(ret[count], fd);
 			ft_putchar_fd('\n', fd);
@@ -215,7 +231,7 @@ int main()
 			PRINT("TESTER Error\n\n");
 			return (0);
 		}
-		while (++count < 500)
+		while (++count < nb_of_tests)
 		{
 			ft_putnbr_fd(ret[count], fd);
 			ft_putchar_fd('\n', fd);
