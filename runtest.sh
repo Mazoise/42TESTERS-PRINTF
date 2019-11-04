@@ -1,8 +1,10 @@
 rm diff.txt &> /dev/null
+rm -rf includes results
+mkdir includes results
 cp ../*.h includes/ &> /dev/null
 cp ../*/*.h includes/ &> /dev/null
 touch results/expected_return.txt results/test_return.txt
-gcc srcs/main.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out &> /dev/null
+gcc srcs/main.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
 ./printf.out >> results/expected_result.txt
 make -C srcs/ 
 ./srcs/tester.out >> results/test_result.txt
@@ -49,5 +51,5 @@ do
 	let "i += 1"
 done
 echo
-rm includes/* results/* printf.txt printf_r.txt ft_r.txt ft.txt printf.out &> /dev/null
+rm -rf includes results printf.txt printf_r.txt ft_r.txt ft.txt printf.out &> /dev/null
 make -C srcs/ fclean &> /dev/null
