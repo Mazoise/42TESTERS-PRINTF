@@ -15,3 +15,5 @@ WARNING : STILL IN CONSTRUCTION
 3 - cd 42TESTERS-PRINTF
 
 4 - bash run_test.sh
+
+5 - check diff.txt in case of errors
