@@ -2,7 +2,7 @@ PREFIXE		= ./
 
 LIBPATH		= ../../
 
-SRCS = $(addprefix ${PREFIXE}, main.c)
+SRCS = $(addprefix ${PREFIXE}, main_no_macro.c)
 
 OBJS		= ${SRCS:.c=.o}
 
@@ -12,7 +12,7 @@ NAME		= tester.out
 
 CC			= gcc
 
-CFLAGS		= -I ${INCLUDES} -D PRINT="ft_printf" -D REAL_F=0
+CFLAGS		= -I ${INCLUDES} -D PRINT="ft_printf" -D REAL_F=0 #-g3 -fsanitize=address
 
 RM			= rm -f
 
