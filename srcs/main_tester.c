@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:40:07 by mchardin          #+#    #+#             */
-/*   Updated: 2019/11/06 16:04:41 by mchardin         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:15:59 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include "ft_printf.h"
 
-#define BPRINT(x, ...) PRINT("\"%s\" // Field size = %d, Precision = %d\n", x, a, b)
+#define BPRINT(x, ...) PRINT("\"%s\" // 1st '*' = %d, 2nd '*' = %d\n", x, a, b)
 
 int main()
 {

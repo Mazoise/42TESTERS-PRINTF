@@ -10,7 +10,7 @@ make re -C srcs/
 cp srcs/main_tester.c srcs/main_test_list.c
 sed -i -e "s/PRINT(\" --- Return : %d\\\n\", /B/g" srcs/main_test_list.c
 sed -i -e "s/));/);/g" srcs/main_test_list.c
-gcc srcs/main_test_list.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
+gcc -Wall -Werror -Wextra -w srcs/main_test_list.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
 ./printf.out >> results/test_list.txt
 echo ""
 echo "============================================================================================================================================================="
