@@ -3,10 +3,15 @@ rm -rf includes results
 mkdir includes results
 cp ../*.h includes/ &> /dev/null
 cp ../*/*.h includes/ &> /dev/null
-gcc -Wall -Werror -Wextra -w srcs/main_no_macro.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
+gcc srcs/main_tester.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
 ./printf.out >> results/expected_result.txt
 make re -C srcs/ 
 ./srcs/tester.out >> results/test_result.txt
+cp srcs/main_tester.c srcs/main_test_list.c
+sed -i -e "s/PRINT(\" --- Return : %d\\\n\", /B/g" srcs/main_test_list.c
+sed -i -e "s/));/);/g" srcs/main_test_list.c
+gcc srcs/main_test_list.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
+./printf.out >> results/test_list.txt
 echo ""
 echo "============================================================================================================================================================="
 echo "========================================================================= FT_PRINTF ========================================================================="
@@ -35,6 +40,8 @@ do
 	else
  		echo -ne "\033[0;31m x	\033[0m"
 		echo "----------Test $i : ----------" >> diff.txt
+		sed -n ${i}p results/test_list.txt >> diff.txt
+		echo >> diff.txt
 		echo "$DIFF" >> diff.txt
 		echo >> diff.txt
 	fi
@@ -64,5 +71,5 @@ else
 	echo
 	echo
 fi
-rm -rf includes results printf.txt ft.txt printf.out &> /dev/null
+rm -rf includes results printf.txt ft.txt test.txt printf.out srcs/main_test_list.c &> /dev/null
 make -C srcs/ fclean &> /dev/null

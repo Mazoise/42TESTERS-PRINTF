@@ -2,7 +2,7 @@ PREFIXE		= ./
 
 LIBPATH		= ../../
 
-SRCS = $(addprefix ${PREFIXE}, main_no_macro.c)
+SRCS = $(addprefix ${PREFIXE}, main_tester.c)
 
 OBJS		= ${SRCS:.c=.o}
 
