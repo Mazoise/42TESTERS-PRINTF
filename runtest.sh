@@ -3,7 +3,7 @@ rm -rf includes results
 mkdir includes results
 cp ../*.h includes/ &> /dev/null
 cp ../*/*.h includes/ &> /dev/null
-gcc srcs/main_tester.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
+gcc -Wall -Werror -Wextra -w srcs/main_tester.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
 ./printf.out >> results/expected_result.txt
 make re -C srcs/ 
 ./srcs/tester.out >> results/test_result.txt

@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:40:07 by mchardin          #+#    #+#             */
-/*   Updated: 2019/11/06 15:40:09 by mchardin         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:04:41 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,9 @@ int main()
 		}
 		a++;
 	}
-	PRINT(" --- Return : %d\n", PRINT("%*.*i, %*.*d", 9, 4, -42, 9, 4, 42)); //T178
+	a = 19;
+	b = 14;
+	PRINT(" --- Return : %d\n", PRINT("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, -42, a, b, 42, -a, -b, -42, -a, -b, 42, -a, b, -42, -a, b, 42, a, -b, -42, a, -b, 42)); //T178
 	PRINT(" --- Return : %d\n", PRINT("%12.12i, %12.12d", -42, 42)); //T179
 	PRINT(" --- Return : %d\n", PRINT("%1s, %1s, %1s, %1s, %1s", n, o, p, q, r)); //T180
 	PRINT(" --- Return : %d\n", PRINT("%2s, %2s, %2s, %2s, %2s", n, o, p, q, r)); //T181
@@ -176,5 +178,6 @@ int main()
 	PRINT(" --- Return : %d\n", PRINT("%i, %d, %d, %d, %d, %s, %d, %u, %x, %X", 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0));
 	PRINT(" --- Return : %d\n", PRINT("%*i, %*d, %*d, %*d, %*d, %*s, %*d, %*u, %*x, %*X", a, 0, a, 0, a, 0, a, 0, a, 0, a, NULL, a, 0, a, 0, a, 0, a, 0));
 	PRINT(" --- Return : %d\n", PRINT("%-2s, %-4s, %-2.4s, %-8.12s, %3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s", NULL, NULL, NULL, NULL, NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL));
+	PRINT(" --- Return : %d\n", PRINT("(null)"));
 	PRINT(" --- Return : %d\n", PRINT(""));
 }
