@@ -1,16 +1,14 @@
 rm diff.txt &> /dev/null
-rm -rf includes results
-mkdir includes results
-cp ../*.h includes/ &> /dev/null
-cp ../*/*.h includes/ &> /dev/null
-gcc -Wall -Werror -Wextra -w srcs/main_tester.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
+rm -rf results
+mkdir results
+gcc -Wall -Werror -Wextra -w srcs/main_tester.c -D PRINT="printf" -o printf.out # &> /dev/null
 ./printf.out >> results/expected_result.txt
-make re -C srcs/ 
+make re -C srcs/
 ./srcs/tester.out >> results/test_result.txt
 cp srcs/main_tester.c srcs/main_test_list.c
 sed -i -e "s/PRINT(\" --- Return : %d\\\n\", /B/g" srcs/main_test_list.c
 sed -i -e "s/));/);/g" srcs/main_test_list.c
-gcc -Wall -Werror -Wextra -w srcs/main_test_list.c srcs/ft_putnbr_fd.c srcs/ft_putchar_fd.c srcs/ft_substr.c -D PRINT="printf" -D REAL_F=1 -I ./includes -o printf.out # &> /dev/null
+gcc -Wall -Werror -Wextra -w srcs/main_test_list.c -D PRINT="printf" -o printf.out # &> /dev/null
 ./printf.out >> results/test_list.txt
 echo ""
 echo "============================================================================================================================================================="
@@ -71,5 +69,5 @@ else
 	echo
 	echo
 fi
-rm -rf includes results printf.txt ft.txt test.txt printf.out srcs/main_test_list.c srcs/main_test_list.c-e &> /dev/null
+rm -rf results printf.txt ft.txt test.txt printf.out srcs/main_test_list.c srcs/main_test_list.c-e &> /dev/null
 make -C srcs/ fclean &> /dev/null

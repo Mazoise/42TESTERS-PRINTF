@@ -2,17 +2,15 @@ PREFIXE		= ./
 
 LIBPATH		= ../../
 
-SRCS = $(addprefix ${PREFIXE}, main_tester.c)
+SRCS		= $(addprefix ${PREFIXE}, main_tester.c)
 
 OBJS		= ${SRCS:.c=.o}
-
-INCLUDES	= ../includes
 
 NAME		= tester.out
 
 CC			= gcc
 
-CFLAGS		= -I ${INCLUDES} -D PRINT="ft_printf" -D REAL_F=0 #-g3 -fsanitize=address
+CFLAGS		= -D PRINT="ft_printf" -D REAL_F=0 -g3 -fsanitize=address
 
 RM			= rm -f
 
@@ -22,9 +20,11 @@ LIB			= -L${LIBPATH} -lftprintf
 
 PRINTF_MAKE	= ${MAKE} -C ${LIBPATH}
 
-$(NAME):	${OBJS}
-			${PRINTF_MAKE}
+$(NAME):	${OBJS} printmake
 			${CC} ${CFLAGS} ${OBJS} ${LIB} -o ${NAME}
+
+printmake:	
+			${PRINTF_MAKE}
 
 all:		${NAME}
 
