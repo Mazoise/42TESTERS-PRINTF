@@ -10,3 +10,5 @@
 4 - bash run_test.sh
 
 5 - check diff.txt in case of errors
+
+Path to your project's Makefile can be changed in srcs/Makefile (Default : LIBPATH = ../../)
