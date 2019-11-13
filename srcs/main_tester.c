@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:40:07 by mchardin          #+#    #+#             */
-/*   Updated: 2019/11/13 14:20:43 by mchardin         ###   ########.fr       */
+/*   Updated: 2019/11/13 18:35:30 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,7 @@ int main()
 	PRINT(" --- Return : %d\n", PRINT("%c,  %-c, %1c, %*c,  %-*c,  %*c, %-*c", c, n[0], o[0], a, p[0], a, q[0], a, r[0], a, c));
 	PRINT(" --- Return : %d\n", PRINT("%c,  %-c, %1c, %*c,  %-*c,  %*c, %-*c", c, n[0], o[0], -a, p[0], -a, q[0], -a, r[0], -a, c));
 	PRINT(" --- Return : %d\n", PRINT("%c,  %-c, %1c, %*c,  %-*c,  %*c, %-*c", c, n[0], q[0], a, q[0], a, p[0], a, p[0], a, c));
+	PRINT(" --- Return : %d\n", PRINT("%c,  %-c, %1c, %*c,  %-*c,  %*c", -12, -1, -255, a, -12, a, -1, a, -255));
 	PRINT(" --- Return : %d\n", PRINT("%%, \t, \\, \", \', +"));
 	PRINT(" --- Return : %d\n", PRINT("%%%dbada%s%%**%s**-d%42%0*d%-12s0*@", h, "bada", r, p, r, r, i, r, i, r, i));
 	PRINT(" --- Return : %d\n", PRINT("%-00000-----*i, %---0.*d, %0-0-0-0-0.*d, %-0-0-0-0-.*d, %-----.*d", a, i, a, i, a, i, a, i, a, i));
@@ -178,6 +179,7 @@ int main()
 	PRINT(" --- Return : %d\n", PRINT("%-00000-----*i, %---0.*d, %0-0-0-0-0.*d, %-0-0-0-0-.*d, %-----.*d", a, l, a, l, a, l, a, l, a, l));
 	PRINT(" --- Return : %d\n", PRINT("%i, %d, %d, %d, %d, %s, %d, %u, %x, %X", 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0));
 	PRINT(" --- Return : %d\n", PRINT("%*i, %*d, %*d, %*d, %*d, %*s, %*d, %*u, %*x, %*X", a, 0, a, 0, a, 0, a, 0, a, 0, a, NULL, a, 0, a, 0, a, 0, a, 0));
+	PRINT(" --- Return : %d\n", PRINT("%*c, %*c, %*c, %-*c, %-*c, %-*c, %.*c, %.*c, %.*c, %c", a, 0, -a, 0, a - 12, 0, a, 0, -a, 0, a - 12, 0, a, 0, -a, 0, a - 12, 0, 0));
 	PRINT(" --- Return : %d\n", PRINT("%-2s, %-4s, %-2.4s, %-8.12s, %3s, %8s, %---2s, %.*s, %.0s, %.1s, %.2s, %.4s, %.8s", NULL, NULL, NULL, NULL, NULL, NULL, NULL, -2, NULL, NULL, NULL, NULL, NULL, NULL));
 	PRINT(" --- Return : %d\n", PRINT("(null)"));
 	PRINT(" --- Return : %d\n", PRINT(""));
