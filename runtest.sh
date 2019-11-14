@@ -3,7 +3,7 @@ rm -rf results
 mkdir results
 gcc -Wall -Werror -Wextra -w srcs/main_tester.c -D PRINT="printf" -o printf.out # &> /dev/null
 ./printf.out >> results/expected_result.txt
-make re -C srcs/
+make -C srcs/
 ./srcs/tester.out >> results/test_result.txt
 cp srcs/main_tester.c srcs/main_test_list.c
 sed -i -e "s/PRINT(\" --- Return : %d\\\n\", /B/g" srcs/main_test_list.c
