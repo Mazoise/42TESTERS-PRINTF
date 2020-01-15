@@ -1,7 +1,7 @@
 # 42TESTERS-PRINTF
 
 
-1 - cd to the file with your fonctions
+1 - cd to the folder with your fonctions
 
 2 - git clone https://github.com/Mazoise/42TESTERS-PRINTF.git
 
