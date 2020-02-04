@@ -1,3 +1,5 @@
+#!/bin/bash
+
 rm diff.txt &> /dev/null
 rm -rf results
 mkdir results
