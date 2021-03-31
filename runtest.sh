@@ -18,7 +18,7 @@ echo "==========================================================================
 echo "================================= FT_PRINTF ================================="
 echo "============================================================================="
 echo ""
-test_count=$(wc -l results/expected_result.txt | cut -f 6 -d " ")
+test_count=$(wc -l results/expected_result.txt | rev | cut -f 2 -d " " | rev)
 i=1
 k=0
 sed -n ${i}p results/test_result.txt >> ft.txt
