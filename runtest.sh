@@ -18,12 +18,12 @@ echo "==========================================================================
 echo "================================= FT_PRINTF ================================="
 echo "============================================================================="
 echo ""
-test_count=$(wc -l results/expected_result.txt | cut -f 1 -d " ")
+test_count=$(wc -l results/expected_result.txt | cut -f 6 -d " ")
 i=1
 k=0
 sed -n ${i}p results/test_result.txt >> ft.txt
 if [ $RET -ne 127 ] ; then
-	while [ -s ft.txt ] && [[ $i -le $test_count ]] ; do
+	while [ -s ft.txt ] && [ $i -le $test_count ] ; do
 		rm -f printf.txt ft.txt printf_r.txt ft_r.txt
 		sed -n ${i}p results/expected_result.txt >> printf.txt
 		sed -n ${i}p results/test_result.txt >> ft.txt
@@ -53,7 +53,7 @@ if [ $RET -ne 127 ] ; then
 		let "i += 1"
 	done
 	let "i -= 1"
-	if [[ $i -ne $test_count ]] ; then
+	if [ $i -ne $test_count ] ; then
 		if [ $RET -eq 124 ] ; then
 			echo -ne "\033[0;31m TIMEOUT \033[0m"
 		elif [ $RET -eq 139 ] ; then
@@ -64,7 +64,7 @@ if [ $RET -ne 127 ] ; then
 	else
 		echo
 		echo
-		if [[ $i -eq $k ]] ; then
+		if [ $i -eq $k ] ; then
 				echo -ne "
             _           _
            / \_______ /|_\\

@@ -6,7 +6,7 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:40:07 by mchardin          #+#    #+#             */
-/*   Updated: 2021/03/31 17:02:26 by mchardin         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:52:25 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <pthread.h>
 #include <signal.h>
 
-#define TIMEOUT 3000000 // timeout in microseconds - default = 3 seconds (3000000)
+#define TIMEOUT 1000000 // timeout in microseconds - default = 1 seconds (1000000)
 #define BPRINT(x, ...) PRINT("\"%s\" // 1st '*' = %d, 2nd '*' = %d\n", x, a, b)
 
 int				ft_printf(const char *str, ...);
