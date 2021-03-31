@@ -22,20 +22,20 @@ test_count=$(wc -l results/expected_result.txt | cut -f 1 -d " ")
 i=1
 k=0
 sed -n ${i}p results/test_result.txt >> ft.txt
-if [ $RET -ne 127 ] ; then
-	while [ -s ft.txt ] && [ $i -le $test_count ] ; do
+if [[ $RET -ne 127 ]] ; then
+	while [[ -s ft.txt ]] && [[ $i -le $test_count ]] ; do
 		rm -f printf.txt ft.txt printf_r.txt ft_r.txt
 		sed -n ${i}p results/expected_result.txt >> printf.txt
 		sed -n ${i}p results/test_result.txt >> ft.txt
-		if [ $i -lt 10 ] ; then
+		if [[ $i -lt 10 ]] ; then
 			echo -n "Test   $i :"
-		elif [ $i -lt 100 ] ; then
+		elif [[ $i -lt 100 ]] ; then
 			echo -n "Test  $i :"
 		else
 			echo -n "Test $i :"
 		fi
 		DIFF=$(diff ft.txt printf.txt)
-		if [ "$DIFF" == "" ] ; then
+		if [[ "$DIFF" == "" ]] ; then
 			echo -ne "\033[0;32m \xE2\x9C\x94	\033[0m"
 			let "k += 1"
 		else
@@ -47,24 +47,24 @@ if [ $RET -ne 127 ] ; then
 			echo >> diff.txt
 		fi
 		let "j = $i % 5"
-		if [ $j -eq 0 ] ; then
+		if [[ $j -eq 0 ]] ; then
 			echo
 		fi
 		let "i += 1"
 	done
 	let "i -= 1"
-	if [ $i -ne $test_count ] ; then
-		if [ $RET -eq 124 ] ; then
+	if [[ $i -ne $test_count ]] ; then
+		if [[ $RET -eq 124 ]] ; then
 			echo -ne "\033[0;31m TIMEOUT \033[0m"
-		elif [ $RET -eq 139 ] ; then
+		elif [[ $RET -eq 139 ]] ; then
 			echo -ne "\033[0;31m SEGFAULT \033[0m"
-		elif [ $RET -gt 0 ]; then
+		elif [[ $RET -gt 0 ]]; then
 		echo -ne "\033[0;31m PROGRAM RETURNED ERROR $RET \033[0m"
 		fi
 	else
 		echo
 		echo
-		if [ $i -eq $k ] ; then
+		if [[ $i -eq $k ]] ; then
 				echo -ne "
             _           _
            / \_______ /|_\\
