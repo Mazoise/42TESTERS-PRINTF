@@ -14,8 +14,7 @@ If you want to be a good developer, please make your own tests. You should only 
 
 Path to your project's Makefile can be changed in srcs/Makefile (Default : LIBPATH = ../../)
 
-WARNING if you are working on Linux : Some undefined behaviours are present in this tester because they might be tested by moulinette. For example null strings (line 185 of my main) and null pointers (lines 156-163 and line 169) which will not give the same result on linux and macos.
-
+WARNING if you are working on Linux : Some undefined behaviours are present in this tester because they might be tested by moulinette. For example null strings (line 188 of my main) and null pointers (lines 159-166 and line 172) which will not give the same result on linux and macos.
 
 \
 <br>

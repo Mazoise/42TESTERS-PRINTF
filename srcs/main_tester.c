@@ -6,19 +6,22 @@
 /*   By: mchardin <mchardin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:40:07 by mchardin          #+#    #+#             */
-/*   Updated: 2020/01/29 18:15:16 by mchardin         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:02:26 by mchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <pthread.h>
+#include <signal.h>
+
+#define TIMEOUT 3000000 // timeout in microseconds - default = 3 seconds (3000000)
+#define BPRINT(x, ...) PRINT("\"%s\" // 1st '*' = %d, 2nd '*' = %d\n", x, a, b)
 
 int				ft_printf(const char *str, ...);
 
-#define BPRINT(x, ...) PRINT("\"%s\" // 1st '*' = %d, 2nd '*' = %d\n", x, a, b)
-
-int main()
+void *tests(void *timer_void)
 {
 	int		a = -4;
 	int		b = 0;
@@ -186,4 +189,33 @@ int main()
 	// ^ Theoriquement un comportement indefini mais testé par la moulinette
     PRINT(" --- Return : %d\n", PRINT("(null)"));
 	PRINT(" --- Return : %d\n", PRINT(""));
+	pthread_t *timer_thread = timer_void;
+	pthread_kill(timer_thread, 0);
+	return(NULL);
+}
+
+void	*timer(void *test_void)
+{
+	int		ret = 124;
+
+	usleep(TIMEOUT);
+	pthread_t *test_thread = test_void;
+	pthread_kill(test_thread, 0);
+	pthread_exit(&ret);
+}
+
+int	main()
+{
+	pthread_t	test_thread;
+	pthread_t	timer_thread;
+	void		*ret = 0;
+	int			*ret_value;
+
+	pthread_create(&test_thread, NULL, tests, &timer_thread);
+	pthread_create(&timer_thread, NULL, timer, &test_thread);
+	pthread_join(timer_thread, &ret);
+	ret_value = ret;
+	if (ret_value)
+		return(124);
+	return(0);
 }

@@ -10,7 +10,7 @@ NAME		= tester.out
 
 CC			= gcc
 
-CFLAGS		= -w -Wall -Werror -Wextra -D PRINT="ft_printf" -g3 -fsanitize=address
+CFLAGS		= -w -Wall -Werror -Wextra -pthread -D PRINT="ft_printf" -g3 -fsanitize=address
 
 RM			= rm -f
 

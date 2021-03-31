@@ -3,15 +3,15 @@
 rm diff.txt &> /dev/null
 rm -rf results
 mkdir results
-gcc -Wall -Werror -Wextra -w srcs/main_tester.c -D PRINT="printf" -o printf.out # &> /dev/null
+gcc -Wall -Werror -Wextra -pthread -w srcs/main_tester.c -D PRINT="printf" -o printf.out # &> /dev/null
 ./printf.out >> results/expected_result.txt
 make -C srcs/
-timeout 5 ./srcs/tester.out >> results/test_result.txt
+./srcs/tester.out >> results/test_result.txt
 RET=$?
 cp srcs/main_tester.c srcs/main_test_list.c
 sed -i -e "s/PRINT(\" --- Return : %d\\\n\", /B/g" srcs/main_test_list.c
 sed -i -e "s/));/);/g" srcs/main_test_list.c
-gcc -Wall -Werror -Wextra -w srcs/main_test_list.c -D PRINT="printf" -o printf.out # &> /dev/null
+gcc -Wall -Werror -Wextra -pthread -w srcs/main_test_list.c -D PRINT="printf" -o printf.out # &> /dev/null
 ./printf.out >> results/test_list.txt
 echo ""
 echo "============================================================================="
